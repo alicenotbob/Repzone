@@ -1,6 +1,6 @@
 package by.powerline.repzone.repository;
 
-import by.powerline.repzone.model.db.User;
+import by.powerline.repzone.model.db.Service;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -10,6 +10,7 @@ import org.springframework.stereotype.Repository;
  * @since 21.02.2018 1:17
  */
 @Repository
-public interface UserRepository extends JpaRepository<User, Long> {
-    User findUserByUsername(String username);
+public interface ServiceRepository extends JpaRepository<Service, Long> {
+    Service findServiceByServiceName(String username);
+    Service findServiceByEmail(String email);
 }
