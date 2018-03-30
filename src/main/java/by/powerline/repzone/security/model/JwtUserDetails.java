@@ -1,6 +1,6 @@
 package by.powerline.repzone.security.model;
 
-import by.powerline.repzone.model.db.User;
+import by.powerline.repzone.model.db.Service;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
@@ -25,12 +25,12 @@ public class JwtUserDetails implements UserDetails {
     private String password;
     private Set<GrantedAuthority> grantedAuthorities;
 
-    public JwtUserDetails(User user) {
-        this.id = user.getId();
-        this.username = user.getUsername();
-        this.password = user.getPassword();
+    public JwtUserDetails(Service service) {
+        this.id = service.getId();
+        this.username = service.getServiceName();
+        this.password = service.getPassword();
         this.grantedAuthorities = new HashSet<>();
-        this.grantedAuthorities.add(new SimpleGrantedAuthority(user.getRole().name()));
+        this.grantedAuthorities.add(new SimpleGrantedAuthority("ROLE_SERVICE"));
     }
 
     @Override

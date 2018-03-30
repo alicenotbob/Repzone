@@ -75,6 +75,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
+                .antMatchers("/register").anonymous()
                 .and()
                 .addFilterAfter(
                         new JwtAuthenticationFilter(authenticationManagerBean()),
