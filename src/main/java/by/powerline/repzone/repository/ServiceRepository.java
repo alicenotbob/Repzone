@@ -11,6 +11,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface ServiceRepository extends JpaRepository<Service, Long> {
-    Service findServiceByServiceName(String username);
+    Service findServiceByServiceName(String serviceName);
     Service findServiceByEmail(String email);
 }
