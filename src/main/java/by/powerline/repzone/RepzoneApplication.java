@@ -9,7 +9,6 @@ import org.springframework.context.annotation.PropertySource;
 
 @SpringBootApplication
 @PropertySource({"classpath:application.properties", "classpath:custom.properties"})
-@Import({WebConfig.class, SecurityConfig.class})
 public class RepzoneApplication {
 
 	public static void main(String[] args) {
