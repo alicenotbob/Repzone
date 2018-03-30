@@ -1,0 +1,149 @@
+<div class="container">
+  <form class="form-horizontal" role="form" method="POST">
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <h2>Регистрация</h2>
+        <hr>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <label class="sr-only" for="email">E-Mail</label>
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
+            <input type="text" name="email" class="form-control" id="email"
+                   placeholder="service@rem.by" required autofocus>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+          <span class="text-danger align-middle">
+            <i class="fa fa-close"></i> Ашибка
+          </span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <div class="form-group">
+          <label class="sr-only" for="password">Пароль</label>
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
+            <input type="password" name="password" class="form-control" id="password"
+                   placeholder="Пароль" required>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3">
+        <div class="form-control-feedback">
+          <span class="text-danger align-middle"></span>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right">Название сервиса</div>
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-id-card"></i></div>
+            <input type="text" name="service_name" class="form-control"
+                   placeholder="apple-rem" required autofocus>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right">Описание сервиса</div>
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-info"></i></div>
+            <textarea name="service_description" rows="3" class="form-control" placeholder="Тут должно быть описание вашего сервиса..."></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right">Время работы</div>
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-clock-o"></i></div>
+            <input type="text" name="service_time_open" class="form-control"
+                   placeholder="10:00 - 22:00" required autofocus>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right">Номера телефонов</div>
+      <div class="col-md-6">
+        <div class="form-group has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
+            <textarea name="service_description" rows="3" class="form-control" placeholder="+375291112233, +375251231212"></textarea>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right"></div>
+      <div class="col-md-6">
+        <div class="form-check has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"></div>
+            <input type="checkbox" class="form-check-input" id="warranty">
+            <label for="warranty">Гарантия</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right"></div>
+      <div class="col-md-6">
+        <div class="form-check has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"></div>
+            <input type="checkbox" class="form-check-input" id="official">
+            <label for="official">Официальный сервис центр</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right"></div>
+      <div class="col-md-6">
+        <div class="form-check has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"></div>
+            <input type="checkbox" class="form-check-input" id="courier">
+            <label for="courier">Забор курьером</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-3 text-right"></div>
+      <div class="col-md-6">
+        <div class="form-check has-danger">
+          <div class="input-group mb-2 mr-sm-2 mb-sm-0">
+            <div class="input-group-addon" style="width: 2.6rem"></div>
+            <input type="checkbox" class="form-check-input" id="legal">
+            <label for="legal">Работа с юр лицами</label>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row" style="padding-top: 1rem">
+      <div class="col-md-3"></div>
+      <div class="col-md-6">
+        <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> Зарегистрироваться</button>
+      </div>
+    </div>
+  </form>
+</div>
