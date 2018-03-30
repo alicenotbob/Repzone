@@ -14,15 +14,15 @@
           <label class="sr-only" for="email">E-Mail</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-            <input type="text" name="email" class="form-control" id="email"
+            <input type="text" ngModel="email" name="email" class="form-control" id="email"
                    placeholder="service@rem.by" required autofocus>
           </div>
         </div>
       </div>
       <div class="col-md-3">
-        <div class="form-control-feedback">
+        <div class="form-control-feedback" *ngIf="error">
           <span class="text-danger align-middle">
-            <i class="fa fa-close"></i> Ашибка
+            <i class="fa fa-close"></i> {{error}}
           </span>
         </div>
       </div>
@@ -34,7 +34,7 @@
           <label class="sr-only" for="password">Пароль</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-            <input type="password" name="password" class="form-control" id="password"
+            <input type="password" ngModel="password" name="password" class="form-control" id="password"
                    placeholder="Пароль" required>
           </div>
         </div>
