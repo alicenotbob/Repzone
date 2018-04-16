@@ -14,8 +14,14 @@
           <label class="sr-only" for="email">E-Mail</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-            <input type="text" ngModel="email" name="email" class="form-control" id="email"
-                   placeholder="service@rem.by" required autofocus>
+            <input type="text"
+                   class="form-control"
+                   name="email"
+                   id="email"
+                   placeholder="service@rem.by"
+                   [(ngModel)]="email"
+                   required
+                   autofocus>
           </div>
         </div>
       </div>
@@ -34,8 +40,13 @@
           <label class="sr-only" for="password">Пароль</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-            <input type="password" ngModel="password" name="password" class="form-control" id="password"
-                   placeholder="Пароль" required>
+            <input type="password"
+                   class="form-control"
+                   name="password"
+                   id="password"
+                   placeholder="Пароль"
+                   [(ngModel)]="password"
+                   required>
           </div>
         </div>
       </div>
@@ -48,7 +59,9 @@
     <div class="row" style="padding-top: 1rem">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <button type="button" class="btn btn-primary" (click)="login()"><i class="fa fa-sign-in"></i> Войти</button>
+        <button type="button"
+                class="btn btn-primary"
+                (click)="login()"><i class="fa fa-sign-in"></i> Войти</button>
         <a class="btn btn-link" >Забыли пароль?</a>
       </div>
     </div>

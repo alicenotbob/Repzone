@@ -11,6 +11,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from "./service/auth.service";
 import {ServiceModelService} from "./service/serviceModel.service";
 import {HttpModule} from "@angular/http";
+import {FormsModule} from "@angular/forms";
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import {HttpModule} from "@angular/http";
   imports: [
     BrowserModule,
     AppRoutingModule,
+    FormsModule,
     HttpModule,
     NgbModule.forRoot()
   ],

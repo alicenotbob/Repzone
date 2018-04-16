@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from "../service/auth.service";
-import {FormBuilder, FormGroup, Validators} from "@angular/forms";
 
 @Component({
   selector: 'app-login',
@@ -22,7 +21,6 @@ export class LoginComponent implements OnInit {
   }
 
   login() {
-    console.log('ZHOPA');
     this.authService.login(this.email, this.password).subscribe(
       data => {
         this.router.navigate(['']);
