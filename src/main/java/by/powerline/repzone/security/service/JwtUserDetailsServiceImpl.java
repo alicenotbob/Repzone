@@ -1,7 +1,7 @@
 package by.powerline.repzone.security.service;
 
 import by.powerline.repzone.exception.auth.UserNotFoundException;
-import by.powerline.repzone.model.db.Service;
+import by.powerline.repzone.model.db.ServiceModel;
 import by.powerline.repzone.repository.ServiceRepository;
 import by.powerline.repzone.security.model.JwtUserDetails;
 import lombok.RequiredArgsConstructor;
@@ -24,7 +24,7 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Service user = this.serviceRepository.findServiceByServiceName(username);
+        ServiceModel user = this.serviceRepository.findServiceByServiceName(username);
         if(Objects.isNull(user)) {
             throw new UserNotFoundException("Username not found");
         }

@@ -1,6 +1,6 @@
 package by.powerline.repzone.security.service;
 
-import by.powerline.repzone.model.db.Service;
+import by.powerline.repzone.model.db.ServiceModel;
 import by.powerline.repzone.repository.ServiceRepository;
 import by.powerline.repzone.security.exception.InvalidTokenAuthenticationException;
 import by.powerline.repzone.security.model.JwtAuthenticationToken;
@@ -31,7 +31,7 @@ public class JwtAuthenticationProvider implements AuthenticationProvider {
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         TokenPayload tokenPayload = getAndDeserializeToken(authentication);
         validateTokenPayload(tokenPayload);
-        Service user = this.serviceRepository.findOne(tokenPayload.getUserId());
+        ServiceModel user = this.serviceRepository.findOne(tokenPayload.getUserId());
         checkNotNull(user, "Token does not contain a user id.");
         return new JwtAuthenticationToken(new JwtUserDetails(user));
     }
