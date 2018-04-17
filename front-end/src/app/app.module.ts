@@ -11,7 +11,9 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {AuthService} from "./service/auth.service";
 import {ServiceModelService} from "./service/serviceModel.service";
 import {HttpModule} from "@angular/http";
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
+import {HttpClientModule} from "@angular/common/http";
+import {RegistrationService} from "./service/registration.service";
 
 @NgModule({
   declarations: [
@@ -23,12 +25,15 @@ import {FormsModule} from "@angular/forms";
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    HttpClientModule,
     HttpModule,
+    ReactiveFormsModule,
     NgbModule.forRoot()
   ],
   providers: [
     AuthService,
-    ServiceModelService
+    ServiceModelService,
+    RegistrationService
   ],
   bootstrap: [AppComponent]
 })

@@ -23,10 +23,10 @@ public class JwtUserDetailsServiceImpl implements UserDetailsService {
     private final ServiceRepository serviceRepository;
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        ServiceModel user = this.serviceRepository.findServiceByServiceName(username);
+    public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+        ServiceModel user = this.serviceRepository.findServiceByEmail(email);
         if(Objects.isNull(user)) {
-            throw new UserNotFoundException("Username not found");
+            throw new UserNotFoundException("Email not found");
         }
         return new JwtUserDetails(user);
     }
