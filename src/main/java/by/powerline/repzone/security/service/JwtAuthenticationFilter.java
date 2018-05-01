@@ -35,7 +35,8 @@ public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFil
     }
 
     @Override
-    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse) throws AuthenticationException, IOException, ServletException {
+    public Authentication attemptAuthentication(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse)
+            throws AuthenticationException, IOException, ServletException {
         try {
             String token = getToken(httpServletRequest);
             if(token == null) {

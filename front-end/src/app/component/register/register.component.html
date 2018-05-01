@@ -1,5 +1,6 @@
 <div class="container">
-  <form class="form-horizontal" role="form" method="POST">
+  <form [formGroup]="registrationForm" (submit)="register()"
+        class="form-horizontal" role="form">
     <div class="row">
       <div class="col-md-3"></div>
       <div class="col-md-6">
@@ -14,8 +15,16 @@
           <label class="sr-only" for="email">E-Mail</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-at"></i></div>
-            <input type="text" name="email" class="form-control" id="email"
-                   placeholder="service@rem.by" required autofocus>
+            <input
+              id="email"
+              type="text"
+              class="form-control"
+              name="email"
+              placeholder="serviceModel@rem.by"
+              formControlName="email"
+              [(ngModel)]="service.email"
+              required
+              autofocus>
           </div>
         </div>
       </div>
@@ -34,8 +43,15 @@
           <label class="sr-only" for="password">Пароль</label>
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-key"></i></div>
-            <input type="password" name="password" class="form-control" id="password"
-                   placeholder="Пароль" required>
+            <input
+              id="password"
+              type="password"
+              class="form-control"
+              name="password"
+              formControlName="password"
+              [(ngModel)]="service.password"
+              placeholder="Пароль"
+              required>
           </div>
         </div>
       </div>
@@ -51,8 +67,15 @@
         <div class="form-group has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-id-card"></i></div>
-            <input type="text" name="service_name" class="form-control"
-                   placeholder="apple-rem" required autofocus>
+            <input
+              type="text"
+              class="form-control"
+              name="service_name"
+              formControlName="serviceName"
+              [(ngModel)]="service.serviceName"
+              placeholder="apple-rem"
+              required
+              autofocus>
           </div>
         </div>
       </div>
@@ -63,7 +86,13 @@
         <div class="form-group has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-info"></i></div>
-            <textarea name="service_description" rows="3" class="form-control" placeholder="Тут должно быть описание вашего сервиса..."></textarea>
+            <textarea
+              class="form-control"
+              rows="3"
+              name="service_description"
+              formControlName="serviceDescription"
+              [(ngModel)]="service.serviceDescription"
+              placeholder="Тут должно быть описание вашего сервиса..."></textarea>
           </div>
         </div>
       </div>
@@ -74,8 +103,15 @@
         <div class="form-group has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-clock-o"></i></div>
-            <input type="text" name="service_time_open" class="form-control"
-                   placeholder="10:00 - 22:00" required autofocus>
+            <input
+              type="text"
+              class="form-control"
+              name="service_time_open"
+              formControlName="serviceWorkingTime"
+              [ngModel]="service.serviceWorkingTime"
+              placeholder="10:00 - 22:00"
+              required
+              autofocus>
           </div>
         </div>
       </div>
@@ -86,7 +122,13 @@
         <div class="form-group has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"><i class="fa fa-phone"></i></div>
-            <textarea name="service_description" rows="3" class="form-control" placeholder="+375291112233, +375251231212"></textarea>
+            <textarea
+              rows="3"
+              name="service_phones"
+              class="form-control"
+              formControlName="servicePhones"
+              [(ngModel)]="service.servicePhones"
+              placeholder="+375291112233, +375251231212"></textarea>
           </div>
         </div>
       </div>
@@ -97,7 +139,11 @@
         <div class="form-check has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"></div>
-            <input type="checkbox" class="form-check-input" id="warranty">
+            <input id="warranty"
+                   type="checkbox"
+                   class="form-check-input"
+                   formControlName="warranty"
+                   [(ngModel)]="service.warranty">
             <label for="warranty">Гарантия</label>
           </div>
         </div>
@@ -109,7 +155,11 @@
         <div class="form-check has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"></div>
-            <input type="checkbox" class="form-check-input" id="official">
+            <input id="official"
+                   type="checkbox"
+                   class="form-check-input"
+                   formControlName="officialService"
+                   [(ngModel)]="service.officialService">
             <label for="official">Официальный сервис центр</label>
           </div>
         </div>
@@ -121,7 +171,11 @@
         <div class="form-check has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"></div>
-            <input type="checkbox" class="form-check-input" id="courier">
+            <input id="courier"
+                   type="checkbox"
+                   class="form-check-input"
+                   formControlName="courierAvailability"
+                   [(ngModel)]="service.courierAvailability">
             <label for="courier">Забор курьером</label>
           </div>
         </div>
@@ -133,7 +187,11 @@
         <div class="form-check has-danger">
           <div class="input-group mb-2 mr-sm-2 mb-sm-0">
             <div class="input-group-addon" style="width: 2.6rem"></div>
-            <input type="checkbox" class="form-check-input" id="legal">
+            <input id="legal"
+                   type="checkbox"
+                   class="form-check-input"
+                   formControlName="legalEntityService"
+                   [(ngModel)]="service.legalEntityService">
             <label for="legal">Работа с юр лицами</label>
           </div>
         </div>
@@ -142,7 +200,9 @@
     <div class="row" style="padding-top: 1rem">
       <div class="col-md-3"></div>
       <div class="col-md-6">
-        <button type="submit" class="btn btn-primary"><i class="fa fa-user-plus"></i> Зарегистрироваться</button>
+        <button type="submit" class="btn btn-primary">
+          <i class="fa fa-user-plus"></i> Зарегистрироваться
+        </button>
       </div>
     </div>
   </form>

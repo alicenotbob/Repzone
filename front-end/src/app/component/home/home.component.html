@@ -1,0 +1,81 @@
+<div class="container">
+  <h1 class="text-center">Все сервисы по ремонту смартфонов в одном месте</h1>
+  <div class="alert text-center">
+    <span [class]="leaveReqResultMessageClass">{{leaveReqResultMessage}}</span>
+  </div>
+  <form action="" class="form-horizontal">
+    <div class="row">
+      <div class="col-6 offset-3">
+        <div class="row">
+          <div class="col-4">
+            <div class="form-group">
+              <select id ="region"
+                      name="region"
+                      class="form-control"
+                      [(ngModel)]="requestModel.regionId">
+                <option *ngFor="let r of regions" [(value)]="r.id">{{r.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <select id="brand"
+                      name="brand"
+                      class="form-control"
+                      [(ngModel)]="requestModel.brandId"
+                      (change)="setPhoneModels()">
+                <option *ngFor="let b of brands" [value]="b.id">{{b.name}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-4">
+            <div class="form-group">
+              <select id="model"
+                      name="model"
+                      class="form-control"
+                      [(ngModel)]="requestModel.modelId">
+                <option *ngFor="let m of models" [(value)]="m.id">{{m.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <select id="category"
+                      name="category"
+                      class="form-control text-center"
+                      [(ngModel)]="requestModel.categoryId">
+                <option *ngFor="let c of categories" [(value)]="c.id">{{c.name}}</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xl-auto">
+            <label for="customerNumber">
+              Ваш номер телефона:
+            </label>
+          </div>
+          <div class="col-xl-auto">
+            <div class="form-group">
+              <input id="customerNumber"
+                     name="customerNumber"
+                     class="form-control"
+                     [(ngModel)]="requestModel.customerPhone">
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-6 text-center">
+            <button type="submit"
+                    class="btn btn-primary" (click)="leaveRequest()">Оставить заявку</button>
+          </div>
+          <div class="col-6 text-center">
+            <button type="submit" class="btn btn-primary">Найти сервисы</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>
+</div>

@@ -2,7 +2,7 @@ package by.powerline.repzone.service.impl;
 
 import by.powerline.repzone.exception.auth.AuthenticationFailedException;
 import by.powerline.repzone.exception.auth.UserNotFoundException;
-import by.powerline.repzone.model.db.Service;
+import by.powerline.repzone.model.db.ServiceModel;
 import by.powerline.repzone.model.dto.LoginRequestDTO;
 import by.powerline.repzone.model.dto.LoginResponseDTO;
 import by.powerline.repzone.model.dto.ServiceDTO;
@@ -56,10 +56,10 @@ public class AuthenticationServiceImpl implements AuthenticationService {
 
     private ServiceDTO getAuthUserDto(final Authentication authResult) {
         JwtUserDetails userDetails = (JwtUserDetails) authResult.getPrincipal();
-        Service service = serviceRepository.getOne(userDetails.getId());
-        ServiceDTO dto = mapper.map(service, ServiceDTO.class);
+        ServiceModel serviceModel = serviceRepository.getOne(userDetails.getId());
+        ServiceDTO dto = mapper.map(serviceModel, ServiceDTO.class);
         if(Objects.isNull(dto)) {
-            throw new UserNotFoundException("Such service is not registered.");
+            throw new UserNotFoundException("Such serviceModel is not registered.");
         }
         return dto;
     }

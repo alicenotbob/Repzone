@@ -1,8 +1,8 @@
 import {Injectable} from '@angular/core';
-import {Http} from '@angular/http';
 import {Service} from '../model/service';
 import 'rxjs/add/operator/map';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
+import {HttpClient} from "@angular/common/http";
 
 
 @Injectable()
@@ -11,7 +11,7 @@ export class ServiceModelService {
   private userSource = new BehaviorSubject<Service>(this.getCurrentService());
   currentUser = this.userSource.asObservable();
 
-  constructor(private http: Http) {
+  constructor(private http: HttpClient) {
   }
 
   downloadUserFromLocalStorage() {

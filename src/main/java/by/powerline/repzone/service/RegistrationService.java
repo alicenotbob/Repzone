@@ -1,8 +1,8 @@
 package by.powerline.repzone.service;
 
-import by.powerline.repzone.model.dto.RegistrationRequestDTO;
 import by.powerline.repzone.model.dto.RegistrationResponseDTO;
+import by.powerline.repzone.model.dto.ServiceDTO;
 
 public interface RegistrationService {
-    RegistrationResponseDTO register(RegistrationRequestDTO registrationRequestDTO);
+    RegistrationResponseDTO register(ServiceDTO serviceDTO);
 }

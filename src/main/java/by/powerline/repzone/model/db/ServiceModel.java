@@ -18,7 +18,7 @@ import javax.persistence.*;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Service {
+public class ServiceModel {
 
     @Id
     @GeneratedValue
