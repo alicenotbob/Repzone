@@ -3,6 +3,7 @@ package by.powerline.repzone.web.controller;
 import by.powerline.repzone.model.db.Brand;
 import by.powerline.repzone.model.db.Category;
 import by.powerline.repzone.model.db.Region;
+import by.powerline.repzone.model.dto.ErrorInfoDTO;
 import by.powerline.repzone.model.dto.ModelDTO;
 import by.powerline.repzone.model.dto.RequestDTO;
 import by.powerline.repzone.service.BrandService;
@@ -10,6 +11,7 @@ import by.powerline.repzone.service.CategoryService;
 import by.powerline.repzone.service.ModelService;
 import by.powerline.repzone.service.RequestService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -24,7 +26,7 @@ public class RequestController {
     private final CategoryService categoryService;
 
     @PostMapping("/leaveRequest")
-    public String leaveRequest(@RequestBody RequestDTO requestDTO) {
+    public Boolean leaveRequest(@RequestBody RequestDTO requestDTO) {
         return requestService.leaveRequest(requestDTO);
     }
 
@@ -46,5 +48,11 @@ public class RequestController {
     @GetMapping("/getModels/{brandId}")
     public List<ModelDTO> getModelsByBrand(@PathVariable Long brandId) {
         return modelService.getModelsByBrandId(brandId);
+    }
+
+    @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
+    @ExceptionHandler(RuntimeException.class)
+    public ErrorInfoDTO internalServerError(Exception ex) {
+        return new ErrorInfoDTO(ex);
     }
 }

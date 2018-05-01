@@ -16,16 +16,16 @@ public class Request {
     private Long id;
 
     @ManyToOne
-    private Brand brand;
+    private Region region;
 
     @ManyToOne
-    private Category category;
+    private Brand brand;
 
     @ManyToOne
     private Model model;
 
     @ManyToOne
-    private Region region;
+    private Category category;
 
     @Column
     private String customerPhone;

@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {Router} from "@angular/router";
 import {RequestService} from "../../service/request.service";
-import {RequestModel} from "../../model/request";
+import {RequestModel} from "../../model/request.model";
 import {SelectElement} from "../../model/select.element";
 
 @Component({
@@ -11,11 +11,13 @@ import {SelectElement} from "../../model/select.element";
 })
 export class HomeComponent implements OnInit {
 
-  request = new RequestModel();
+  requestModel = new RequestModel();
   regions: SelectElement[] = [];
   brands: SelectElement[] = [];
   models: SelectElement[] = [];
   categories: SelectElement[] = [];
+  leaveReqResultMessage: string = '';
+  leaveReqResultMessageClass: string = '';
 
   constructor(private router: Router,
               private requestService: RequestService) { }
@@ -44,7 +46,7 @@ export class HomeComponent implements OnInit {
   }
 
   setPhoneModels() {
-    this.requestService.getPhoneModels(this.request.brand).subscribe(next => {
+    this.requestService.getPhoneModels(this.requestModel.brandId).subscribe(next => {
       this.models = next;
     }, err => {
       this.models = [{id:-1, name:"NO DATA"}];
@@ -56,6 +58,23 @@ export class HomeComponent implements OnInit {
       this.categories = next;
     }, err => {
       this.categories = [{id:-1, name:"NO DATA"}];
+    })
+  }
+
+  leaveRequest() {
+    this.leaveReqResultMessage = '';
+    this.leaveReqResultMessageClass = '';
+    this.requestService.leaveRequest(this.requestModel).subscribe(resp => {
+        if(resp) {
+          this.leaveReqResultMessage = 'Ваша заявка оставлена успешно.';
+          this.leaveReqResultMessageClass = 'text-success';
+        } else {
+          this.leaveReqResultMessage = 'Ошибка сохранения заявки.';
+          this.leaveReqResultMessageClass = 'text-danger';
+        }
+    }, err => {
+        this.leaveReqResultMessage = 'Ошибка сохранения заявки.';
+        this.leaveReqResultMessageClass = 'text-danger';
     })
   }
 }

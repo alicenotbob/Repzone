@@ -6,6 +6,6 @@ import by.powerline.repzone.model.dto.RequestDTO;
 import java.util.List;
 
 public interface RequestService {
-    String leaveRequest(RequestDTO requestDTO);
+    Boolean leaveRequest(RequestDTO requestDTO);
     List<Region> getRegions();
 }

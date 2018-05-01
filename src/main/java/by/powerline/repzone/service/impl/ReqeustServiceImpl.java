@@ -23,10 +23,10 @@ public class ReqeustServiceImpl implements RequestService {
     private final ModelMapper modelMapper;
 
     @Override
-    public String leaveRequest(RequestDTO requestDTO) {
+    public Boolean leaveRequest(RequestDTO requestDTO) {
         Request request = modelMapper.map(requestDTO, Request.class);
         Request check = requestRepository.save(request);
-        return Objects.isNull(check) ? "NEOK" : "OK";
+        return Objects.nonNull(check);
     }
 
     @Override

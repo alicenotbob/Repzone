@@ -8,9 +8,10 @@ import org.springframework.stereotype.Component;
 @Setter
 @Component
 public class RequestDTO {
-    private Long category;
-    private Long brand;
-    private Long model;
-    private Long region;
+    private Long id;
+    private Long regionId;
+    private Long brandId;
+    private Long modelId;
+    private Long categoryId;
     private String customerPhone;
 }
