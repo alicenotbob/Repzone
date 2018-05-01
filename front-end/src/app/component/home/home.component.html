@@ -6,22 +6,32 @@
         <div class="row">
           <div class="col-4">
             <div class="form-group">
-              <select class="form-control">
-                <option value="Минск">Минск</option>
+              <select id ="region"
+                      name="region"
+                      class="form-control"
+                      [(ngModel)]="request.region">
+                <option *ngFor="let r of regions" [(value)]="r.id">{{r.name}}</option>
               </select>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
-              <select class="form-control">
-                <option value="Apple">Apple</option>
+              <select id="brand"
+                      name="brand"
+                      class="form-control"
+                      [(ngModel)]="request.brand"
+                      (change)="setPhoneModels()">
+                <option *ngFor="let b of brands" [value]="b.id">{{b.name}}</option>
               </select>
             </div>
           </div>
           <div class="col-4">
             <div class="form-group">
-              <select class="form-control">
-                <option value="iPhone">iPhone</option>
+              <select id="model"
+                      name="model"
+                      class="form-control"
+                      [(ngModel)]="request.model">
+                <option *ngFor="let m of models" [(value)]="m.id">{{m.name}}</option>
               </select>
             </div>
           </div>
@@ -29,11 +39,11 @@
         <div class="row">
           <div class="col-12">
             <div class="form-group">
-              <select class="form-control text-center" size="5">
-                <option value="Замена дислпея">Замена дисплея</option>
-                <option value="Замена дислпея">Замена дисплея</option>
-                <option value="Замена дислпея">Замена дисплея</option>
-                <option value="Замена дислпея">Замена дисплея</option>
+              <select id="category"
+                      name="category"
+                      class="form-control text-center"
+                      [ngModel]="request.category">
+                <option *ngFor="let c of categories" [(value)]="c.id">{{c.name}}</option>
               </select>
             </div>
           </div>
