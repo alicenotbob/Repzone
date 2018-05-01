@@ -16,5 +16,5 @@ public class Brand {
     private Long id;
 
     @Column
-    private String value;
+    private String name;
 }

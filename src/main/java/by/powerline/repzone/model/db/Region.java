@@ -21,5 +21,5 @@ public class Region {
     private Long id;
 
     @Column
-    private String regionName;
+    private String name;
 }

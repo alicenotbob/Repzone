@@ -15,6 +15,9 @@ public class Model {
     @GeneratedValue
     private Long id;
 
+    @ManyToOne
+    private Brand brand;
+
     @Column
-    private String value;
+    private String name;
 }

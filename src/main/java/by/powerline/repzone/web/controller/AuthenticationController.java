@@ -7,6 +7,7 @@ import by.powerline.repzone.model.dto.LoginResponseDTO;
 import by.powerline.repzone.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
@@ -20,8 +21,8 @@ public class AuthenticationController {
         return authenticationService.login(loginRequestDTO);
     }
 
-    @ResponseStatus(HttpStatus.NO_CONTENT)
-    @ExceptionHandler(UserNotFoundException.class)
+    @ResponseStatus(HttpStatus.FORBIDDEN)
+    @ExceptionHandler({UserNotFoundException.class, BadCredentialsException.class})
     public ErrorInfoDTO usernameNotFound(Exception exception) {
         return new ErrorInfoDTO(exception);
     }

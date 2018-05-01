@@ -6,7 +6,7 @@ import lombok.Setter;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "category")
+@Table(name = "categories")
 @Getter
 @Setter
 public class Category {
@@ -16,5 +16,5 @@ public class Category {
     private Long id;
 
     @Column
-    private String value;
+    private String name;
 }
