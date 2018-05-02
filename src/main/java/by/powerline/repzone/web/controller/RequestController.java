@@ -6,10 +6,8 @@ import by.powerline.repzone.model.db.Region;
 import by.powerline.repzone.model.dto.ErrorInfoDTO;
 import by.powerline.repzone.model.dto.ModelDTO;
 import by.powerline.repzone.model.dto.RequestDTO;
-import by.powerline.repzone.service.BrandService;
-import by.powerline.repzone.service.CategoryService;
-import by.powerline.repzone.service.ModelService;
-import by.powerline.repzone.service.RequestService;
+import by.powerline.repzone.model.dto.ServiceDTO;
+import by.powerline.repzone.service.*;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
@@ -21,6 +19,7 @@ import java.util.List;
 @RequiredArgsConstructor
 public class RequestController {
 
+    private final ServiceModelService serviceModelService;
     private final RequestService requestService;
     private final BrandService brandService;
     private final ModelService modelService;
@@ -49,6 +48,11 @@ public class RequestController {
     @GetMapping("/getModels/{brandId}")
     public List<ModelDTO> getModelsByBrand(@PathVariable Long brandId) {
         return modelService.getModelsByBrandId(brandId);
+    }
+
+    @PostMapping("/searchServices")
+    public List<ServiceDTO> searchServices(@RequestBody RequestDTO requestDTO) {
+        return serviceModelService.searchServices(requestDTO);
     }
 
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
