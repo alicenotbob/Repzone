@@ -62,19 +62,26 @@ export class HomeComponent implements OnInit {
   }
 
   leaveRequest() {
+    this.clearMessage();
+    this.requestService.leaveRequest(this.requestModel).subscribe(resp => {
+        this.updateMessage(resp);
+    }, err => {
+        this.updateMessage(false);
+    })
+  }
+
+  clearMessage() {
     this.leaveReqResultMessage = '';
     this.leaveReqResultMessageClass = '';
-    this.requestService.leaveRequest(this.requestModel).subscribe(resp => {
-        if(resp) {
-          this.leaveReqResultMessage = 'Ваша заявка оставлена успешно.';
-          this.leaveReqResultMessageClass = 'text-success';
-        } else {
-          this.leaveReqResultMessage = 'Ошибка сохранения заявки.';
-          this.leaveReqResultMessageClass = 'text-danger';
-        }
-    }, err => {
-        this.leaveReqResultMessage = 'Ошибка сохранения заявки.';
-        this.leaveReqResultMessageClass = 'text-danger';
-    })
+  }
+
+  updateMessage(flag: boolean) {
+    if(flag) {
+      this.leaveReqResultMessage = 'Ваша заявка оставлена успешно.';
+      this.leaveReqResultMessageClass = 'text-success';
+    } else {
+      this.leaveReqResultMessage = 'Ошибка сохранения заявки.';
+      this.leaveReqResultMessageClass = 'text-danger';
+    }
   }
 }
