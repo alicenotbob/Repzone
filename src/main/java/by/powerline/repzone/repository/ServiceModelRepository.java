@@ -4,6 +4,8 @@ import by.powerline.repzone.model.db.ServiceModel;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+
 /**
  * @author v.tarasevich
  * @version 1.0
@@ -12,5 +14,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface ServiceModelRepository extends JpaRepository<ServiceModel, Long> {
     ServiceModel findServiceByEmail(String email);
-    ServiceModel findAllByRegionId(Long regionId);
+    List<ServiceModel> findAllByRegionId(Long regionId);
 }
