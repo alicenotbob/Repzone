@@ -8,7 +8,6 @@ import by.powerline.repzone.repository.RequestRepository;
 import by.powerline.repzone.service.RequestService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
-import org.springframework.data.domain.Example;
 import org.springframework.stereotype.Service;
 
 import java.util.List;

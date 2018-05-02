@@ -10,7 +10,7 @@ import org.springframework.stereotype.Repository;
  * @since 21.02.2018 1:17
  */
 @Repository
-public interface ServiceRepository extends JpaRepository<ServiceModel, Long> {
-    ServiceModel findServiceByServiceName(String serviceName);
+public interface ServiceModelRepository extends JpaRepository<ServiceModel, Long> {
     ServiceModel findServiceByEmail(String email);
+    ServiceModel findAllByRegionId(Long regionId);
 }

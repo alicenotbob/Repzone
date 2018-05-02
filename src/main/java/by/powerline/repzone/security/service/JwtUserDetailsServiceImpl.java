@@ -2,7 +2,7 @@ package by.powerline.repzone.security.service;
 
 import by.powerline.repzone.exception.auth.UserNotFoundException;
 import by.powerline.repzone.model.db.ServiceModel;
-import by.powerline.repzone.repository.ServiceRepository;
+import by.powerline.repzone.repository.ServiceModelRepository;
 import by.powerline.repzone.security.model.JwtUserDetails;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -20,11 +20,11 @@ import java.util.Objects;
 @RequiredArgsConstructor
 public class JwtUserDetailsServiceImpl implements UserDetailsService {
 
-    private final ServiceRepository serviceRepository;
+    private final ServiceModelRepository serviceModelRepository;
 
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
-        ServiceModel user = this.serviceRepository.findServiceByEmail(email);
+        ServiceModel user = this.serviceModelRepository.findServiceByEmail(email);
         if(Objects.isNull(user)) {
             throw new UserNotFoundException("Email not found");
         }
