@@ -3,6 +3,9 @@ import {Service} from '../model/service';
 import 'rxjs/add/operator/map';
 import {BehaviorSubject} from "rxjs/BehaviorSubject";
 import {HttpClient} from "@angular/common/http";
+import {RequestModel} from "../model/request.model";
+import {Observable} from "rxjs/Observable";
+import {API_URL} from "../constant/API";
 
 
 @Injectable()
@@ -36,5 +39,9 @@ export class ServiceModelService {
 
   removeService() {
     localStorage.removeItem('currentUser');
+  }
+
+  findServices(request: RequestModel): Observable<any> {
+    return this.http.post(API_URL + "/searchServices", request);
   }
 }

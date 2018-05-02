@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {RequestService} from "../../service/request.service";
 import {RequestModel} from "../../model/request.model";
 import {SelectElement} from "../../model/select.element";
+import {ServiceModelService} from "../../service/serviceModel.service";
 
 @Component({
   selector: 'app-home',
@@ -20,7 +21,8 @@ export class HomeComponent implements OnInit {
   leaveReqResultMessageClass: string = '';
 
   constructor(private router: Router,
-              private requestService: RequestService) { }
+              private requestService: RequestService,
+              private serviceModelService: ServiceModelService) { }
 
   ngOnInit() {
     this.setRegions();
@@ -68,6 +70,14 @@ export class HomeComponent implements OnInit {
     }, err => {
         this.updateMessage(false);
     })
+  }
+
+  findServices() {
+    this.serviceModelService.findServices(this.requestModel).subscribe(next => {
+      console.log(next);
+    }, err => {
+      console.log(err);
+    });
   }
 
   clearMessage() {
