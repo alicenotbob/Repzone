@@ -13,7 +13,7 @@
                       name="region"
                       class="form-control"
                       [(ngModel)]="requestModel.regionId">
-                <option *ngFor="let r of regions" [(value)]="r.id">{{r.name}}</option>
+                <option *ngFor="let r of regions; let i = index" [(value)]="r.id">{{r.name}}</option>
               </select>
             </div>
           </div>
@@ -24,7 +24,7 @@
                       class="form-control"
                       [(ngModel)]="requestModel.brandId"
                       (change)="setPhoneModels()">
-                <option *ngFor="let b of brands" [value]="b.id">{{b.name}}</option>
+                <option *ngFor="let b of brands; let i = index;" [value]="b.id">{{b.name}}</option>
               </select>
             </div>
           </div>
@@ -34,7 +34,7 @@
                       name="model"
                       class="form-control"
                       [(ngModel)]="requestModel.modelId">
-                <option *ngFor="let m of models" [(value)]="m.id">{{m.name}}</option>
+                <option *ngFor="let m of models; let i = index;" [(value)]="m.id">{{m.name}}</option>
               </select>
             </div>
           </div>
@@ -46,7 +46,7 @@
                       name="category"
                       class="form-control text-center"
                       [(ngModel)]="requestModel.categoryId">
-                <option *ngFor="let c of categories" [(value)]="c.id">{{c.name}}</option>
+                <option *ngFor="let c of categories; let i = index;" [(value)]="c.id">{{c.name}}</option>
               </select>
             </div>
           </div>
@@ -68,11 +68,11 @@
         </div>
         <div class="row">
           <div class="col-6 text-center">
-            <button type="submit"
+            <button type="button"
                     class="btn btn-primary" (click)="leaveRequest()">Оставить заявку</button>
           </div>
           <div class="col-6 text-center">
-            <button type="submit"
+            <button type="button"
                     class="btn btn-primary"
                     (click)="findServices()">Найти сервисы</button>
           </div>

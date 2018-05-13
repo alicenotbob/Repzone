@@ -42,6 +42,6 @@ export class ServiceModelService {
   }
 
   findServices(request: RequestModel): Observable<any> {
-    return this.http.post(API_URL + "/searchServices", request);
+    return this.http.post(API_URL + "/searchServicePrices", request);
   }
 }

@@ -11,4 +11,5 @@ export class Service {
   warranty: boolean = false;
   courierAvailability: boolean = false;
   legalEntityService: boolean = false;
+  logoLink: string = '';
 }

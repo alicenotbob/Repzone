@@ -4,6 +4,7 @@ import {RequestService} from "../../service/request.service";
 import {RequestModel} from "../../model/request.model";
 import {SelectElement} from "../../model/select.element";
 import {ServiceModelService} from "../../service/serviceModel.service";
+import {RequestShareService} from "../../service/request.share.service";
 
 @Component({
   selector: 'app-home',
@@ -22,7 +23,8 @@ export class HomeComponent implements OnInit {
 
   constructor(private router: Router,
               private requestService: RequestService,
-              private serviceModelService: ServiceModelService) { }
+              private serviceModelService: ServiceModelService,
+              private requestShareService: RequestShareService) { }
 
   ngOnInit() {
     this.setRegions();
@@ -33,7 +35,7 @@ export class HomeComponent implements OnInit {
   setRegions() {
     this.requestService.getRegions().subscribe(next => {
       this.regions = next;
-      console.log(this.regions);
+      this.requestModel.regionId = this.regions[0].id;
     }, err => {
       this.regions = [{id:-1, name:"NO DATA"}];
     });
@@ -42,6 +44,8 @@ export class HomeComponent implements OnInit {
   setBrands() {
     this.requestService.getBrands().subscribe(next => {
       this.brands = next;
+      this.requestModel.brandId = this.brands[0].id;
+      this.setPhoneModels();
     }, err => {
       this.brands = [{id:-1, name:"NO DATA"}];
     })
@@ -50,6 +54,7 @@ export class HomeComponent implements OnInit {
   setPhoneModels() {
     this.requestService.getPhoneModels(this.requestModel.brandId).subscribe(next => {
       this.models = next;
+      this.requestModel.modelId = this.models[0].id;
     }, err => {
       this.models = [{id:-1, name:"NO DATA"}];
     })
@@ -58,6 +63,8 @@ export class HomeComponent implements OnInit {
   setCategories() {
     this.requestService.getCategories().subscribe(next => {
       this.categories = next;
+      this.requestModel.categoryId = this.categories[0].id;
+
     }, err => {
       this.categories = [{id:-1, name:"NO DATA"}];
     })
@@ -66,18 +73,15 @@ export class HomeComponent implements OnInit {
   leaveRequest() {
     this.clearMessage();
     this.requestService.leaveRequest(this.requestModel).subscribe(resp => {
-        this.updateMessage(resp);
+      this.updateMessage(resp);
     }, err => {
-        this.updateMessage(false);
+      this.updateMessage(false);
     })
   }
 
   findServices() {
-    this.serviceModelService.findServices(this.requestModel).subscribe(next => {
-      console.log(next);
-    }, err => {
-      console.log(err);
-    });
+    this.requestShareService.changeRequestModel(this.requestModel);
+    this.router.navigate(['/services']);
   }
 
   clearMessage() {

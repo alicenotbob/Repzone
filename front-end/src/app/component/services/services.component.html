@@ -8,8 +8,11 @@
         <div class="col-10">
           <h5 class="form-group">Регион</h5>
           <div class="form-group">
-            <select class="form-control">
-              <option value="Минск">Минск</option>
+            <select id ="region"
+                    name="region"
+                    class="form-control"
+                    [(ngModel)]="requestModel.regionId">
+              <option *ngFor="let r of regions; let i = index" [(value)]="r.id">{{r.name}}</option>
             </select>
           </div>
         </div>
@@ -18,8 +21,12 @@
         <div class="col-10">
           <h5 class="form-group">Производитель</h5>
           <div class="form-group">
-            <select class="form-control">
-              <option value="Apple">Apple</option>
+            <select id="brand"
+                    name="brand"
+                    class="form-control"
+                    [(ngModel)]="requestModel.brandId"
+                    (change)="setPhoneModels()">
+              <option *ngFor="let b of brands; let i = index;" [value]="b.id">{{b.name}}</option>
             </select>
           </div>
         </div>
@@ -28,8 +35,11 @@
         <div class="col-10">
           <h5 class="form-group">Модель</h5>
           <div class="form-group">
-            <select class="form-control">
-              <option value="">iPhone 7</option>
+            <select id="model"
+                    name="model"
+                    class="form-control"
+                    [(ngModel)]="requestModel.modelId">
+              <option *ngFor="let m of models; let i = index;" [(value)]="m.id">{{m.name}}</option>
             </select>
           </div>
         </div>
@@ -38,8 +48,11 @@
         <div class="col-10">
           <h5 class="form-group">Ремонт</h5>
           <div class="form-group">
-            <select class="form-control">
-              <option value="">Замена дисплея</option>
+            <select id="category"
+                    name="category"
+                    class="form-control text-center"
+                    [(ngModel)]="requestModel.categoryId">
+              <option *ngFor="let c of categories; let i = index;" [(value)]="c.id">{{c.name}}</option>
             </select>
           </div>
         </div>
@@ -90,25 +103,26 @@
       </div>
       <div class="row">
         <div class="col-12">
-          <h5>Найдено 30 сервисов</h5>
+          <h5>Найдено {{serviceModels.length}} сервисов</h5>
         </div>
       </div>
     </div>
     <div class="col-9">
       <div class="row">
-        <div class="col-12 mt-2">
+        <div class="col-12 mt-2" *ngFor="let service of serviceModels">
           <div class="row">
             <div class="col-3">
-              <img src="http://via.placeholder.com/350x150" alt="" class="img-fluid">
+              <img src="{{ service.logoLink }}" alt="" class="img-fluid">
             </div>
             <div class="col-7">
-              <h4><a href="">cafeConnect</a></h4>
+              <h4><a href="">{{ service.serviceName }}</a></h4>
               <p>
-
+                {{ service.serviceDescription }} <br>
+                {{ service.serviceWorkingTime }} {{ service.servicePhones }}
               </p>
             </div>
             <div class="col-2">
-              <h5 class="text-center">100 BYN</h5>
+              <h5 class="text-center">{{ service.price }}</h5>
             </div>
           </div>
         </div>

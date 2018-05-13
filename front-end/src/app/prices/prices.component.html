@@ -1,0 +1,52 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+
+    </div>
+    <div class="col-9">
+      <table class="table">
+        <thead>
+        <tr>
+          <th style="width:20%;" scope="col">Бренд</th>
+          <th style="width:20%;" scope="col">Модель</th>
+          <th style="width:20%;" scope="col">Тип поломки</th>
+          <th style="width:20%;" scope="col">Стоимость</th>
+          <th style="width:20%;" scope="col">Действия <button type="button" (click)="addPriceElement()" class="btn btn-primary"><i class="fa fa-plus"></i></button></th>
+        </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let priceElement of priceElements">
+            <td>
+              <select title="Бренд" name="brand"
+                      class="form-control"
+                      [(ngModel)]="requestModel.brandId">
+                <option *ngFor="let r of regions;" [(value)]="r.id">{{r.name}}</option>
+              </select>
+            </td>
+            <td>
+              <select title="Модель" name="model"
+                      class="form-control"
+                      [(ngModel)]="requestModel.modelId">
+                <option *ngFor="let r of regions;" [(value)]="r.id">{{r.name}}</option>
+              </select>
+            </td>
+            <td>
+              <select title="Тип поломки" name="category"
+                      class="form-control"
+                      [(ngModel)]="requestModel.categoryId">
+                <option *ngFor="let r of regions;" [(value)]="r.id">{{r.name}}</option>
+              </select>
+            </td>
+            <td>
+              <input type="text" name="cost" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Стоимость">
+            </td>
+            <td>
+              <button type="button" (click)="updatePriceElement(priceElement)" class="btn btn-primary"><i class="fa fa-check"></i></button>
+              <button type="button" (click)="deletePriceElement(priceElement)" class="btn btn-primary"><i class="fa fa-trash-o"></i></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -16,6 +16,8 @@ import {HttpClientModule} from "@angular/common/http";
 import {RegistrationService} from "./service/registration.service";
 import {ServicesComponent} from "./component/services/services.component";
 import {RequestService} from "./service/request.service";
+import {RequestShareService} from "./service/request.share.service";
+import { PricesComponent } from './prices/prices.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,8 @@ import {RequestService} from "./service/request.service";
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    ServicesComponent
+    ServicesComponent,
+    PricesComponent,
   ],
   imports: [
     BrowserModule,
@@ -37,7 +40,8 @@ import {RequestService} from "./service/request.service";
     AuthService,
     ServiceModelService,
     RegistrationService,
-    RequestService
+    RequestService,
+    RequestShareService
   ],
   bootstrap: [AppComponent]
 })
