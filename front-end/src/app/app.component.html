@@ -3,12 +3,17 @@
         <a class="navbar-brand text-light" routerLink="/">RepZone</a>
         <ul class="navbar-nav ml-auto my-2 mt-lg-0">
             <li class="nav-item">
-                <a class="nav-link text-light" routerLink="login" routerLinkActive="active">Вход</a>
+                <a class="nav-link text-light" *ngIf="!logined" routerLink="login" routerLinkActive="active">Вход</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link text-light" routerLink="register" routerLinkActive="active">Регистрация</a>
+                <a class="nav-link text-light" *ngIf="!logined" routerLink="register" routerLinkActive="active">Регистрация</a>
             </li>
         </ul>
+      <ul class="navbar-nav ml-auto my-2 mt-lg-0" *ngIf="logined">
+        <li class="nav-item">
+          <a class="nav-link text-light" href="#" (click)="authService.logout()">Выход</a>
+        </li>
+      </ul>
     </div>
 </nav>
 <router-outlet></router-outlet>

@@ -106,23 +106,24 @@
           <h5>Найдено {{serviceModels.length}} сервисов</h5>
         </div>
       </div>
+      <button type="button" (click)="findServices()" class="btn btn-primary">Искать!</button>
     </div>
     <div class="col-9">
       <div class="row">
         <div class="col-12 mt-2" *ngFor="let service of serviceModels">
           <div class="row">
             <div class="col-3">
-              <img src="{{ service.logoLink }}" alt="" class="img-fluid">
+              <!--<img src="{{ service.logoLink }}" alt="" class="img-fluid">-->
             </div>
             <div class="col-7">
-              <h4><a href="">{{ service.serviceName }}</a></h4>
+              <h4><a href="">{{ service.service.serviceName }}</a></h4>
               <p>
-                {{ service.serviceDescription }} <br>
-                {{ service.serviceWorkingTime }} {{ service.servicePhones }}
+                {{ service.service.serviceDescription }} <br>
+                {{ service.service.serviceTimeOpen }} {{ service.service.servicePhones }}
               </p>
             </div>
             <div class="col-2">
-              <h5 class="text-center">{{ service.price }}</h5>
+              <h5 class="text-center">{{ service.price }} BYN</h5>
             </div>
           </div>
         </div>

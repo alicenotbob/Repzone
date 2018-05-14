@@ -4,7 +4,6 @@ import {EventEmitter} from "@angular/core";
 export class RequestShareService {
 
   requestModel: RequestModel = new RequestModel();
-
   onChange: EventEmitter<RequestModel> = new EventEmitter();
 
   public changeRequestModel(requestModel: RequestModel) {

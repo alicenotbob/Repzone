@@ -7,4 +7,6 @@ import java.util.List;
 
 public interface ServicePriceService {
     List<ServicePriceDTO> getServicesPrices(RequestDTO dto);
+    ServicePriceDTO savePriceElement(ServicePriceDTO dto);
+    List<ServicePriceDTO> getPriceElements();
 }

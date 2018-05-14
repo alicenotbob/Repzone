@@ -17,7 +17,11 @@ import {RegistrationService} from "./service/registration.service";
 import {ServicesComponent} from "./component/services/services.component";
 import {RequestService} from "./service/request.service";
 import {RequestShareService} from "./service/request.share.service";
-import { PricesComponent } from './prices/prices.component';
+import { PricesComponent } from './component/prices/prices.component';
+import { ClientsComponent } from './component/clients/clients.component';
+import { MainMenuComponent } from './component/main-menu/main-menu.component';
+import {ShareService} from "./service/shareService";
+import {PriceService} from "./service/price.service";
 
 @NgModule({
   declarations: [
@@ -27,6 +31,8 @@ import { PricesComponent } from './prices/prices.component';
     HomeComponent,
     ServicesComponent,
     PricesComponent,
+    ClientsComponent,
+    MainMenuComponent,
   ],
   imports: [
     BrowserModule,
@@ -34,14 +40,16 @@ import { PricesComponent } from './prices/prices.component';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
-    NgbModule.forRoot()
+    NgbModule.forRoot(),
   ],
   providers: [
     AuthService,
     ServiceModelService,
     RegistrationService,
     RequestService,
-    RequestShareService
+    RequestShareService,
+    ShareService,
+    PriceService
   ],
   bootstrap: [AppComponent]
 })

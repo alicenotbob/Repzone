@@ -54,6 +54,8 @@ export class RegisterComponent implements OnInit {
       res => {
         if(res.data === 'EMAIL_ALREADY_EXIST') {
           this.emailExistMessage = 'Such email already exist';
+        } else {
+          this.router.navigate(['/login']);
         }
       },
       (err: HttpErrorResponse) => {

@@ -75,11 +75,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .authorizeRequests()
                 .antMatchers("/**").permitAll()
-                .and()
+                .antMatchers("/savePriceElement").hasAnyRole("ROLE_SERVICE")
+                .and().csrf().disable()
                 .addFilterAfter(
                         new JwtAuthenticationFilter(authenticationManagerBean()),
                         BasicAuthenticationFilter.class
-                ).exceptionHandling()
+                )
+                .exceptionHandling()
                 .authenticationEntryPoint(new RestAuthenticationEntryPoint())
                 .accessDeniedHandler(new RestAccessDeniedHandler());
     }

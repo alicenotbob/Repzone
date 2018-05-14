@@ -1,0 +1,39 @@
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-3">
+      <app-main-menu></app-main-menu>
+    </div>
+    <div class="col-9">
+      <table class="table">
+        <thead>
+        <tr>
+          <th style="width:20%;" scope="col">Телефон клиента</th>
+          <th style="width:20%;" scope="col">Регион клиента</th>
+          <th style="width:20%;" scope="col">Бренд</th>
+          <th style="width:20%;" scope="col">Модель</th>
+          <th style="width:20%;" scope="col">Поломка</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let client of Clients">
+          <td>
+            {{ client.customerPhone }}
+          </td>
+          <td>
+            {{ client.region }}
+          </td>
+          <td>
+            {{ client.brand }}
+          </td>
+          <td>
+            {{ client.model }}
+          </td>
+          <td>
+            {{ client.category }}
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

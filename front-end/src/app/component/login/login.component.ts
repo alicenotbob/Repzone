@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {Router} from '@angular/router';
 import {AuthService} from "../../service/auth.service";
 import {FormBuilder, FormGroup, Validators} from "@angular/forms";
+import {ShareService} from "../../service/shareService";
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,8 @@ export class LoginComponent implements OnInit {
 
   constructor(private fb: FormBuilder,
               private router: Router,
-              private authService: AuthService) {
+              private authService: AuthService,
+              private shareService: ShareService) {
   }
 
   ngOnInit(): void {
@@ -32,10 +34,13 @@ export class LoginComponent implements OnInit {
     if(credentials.email && credentials.password) {
       this.authService.login(credentials.email, credentials.password).subscribe(
         data => {
-          this.router.navigate(['/']);
+          localStorage.setItem('token', data.token);
+          this.shareService.changeLogined(true);
+          this.router.navigate(['/prices']);
         },
         err => {
           this.error = 'Invalid email or password';
+          this.shareService.changeLogined(false);
         }
       );
     }

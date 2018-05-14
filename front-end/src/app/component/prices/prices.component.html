@@ -1,7 +1,7 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-3">
-
+      <app-main-menu></app-main-menu>
     </div>
     <div class="col-9">
       <table class="table">
@@ -11,7 +11,7 @@
           <th style="width:20%;" scope="col">Модель</th>
           <th style="width:20%;" scope="col">Тип поломки</th>
           <th style="width:20%;" scope="col">Стоимость</th>
-          <th style="width:20%;" scope="col">Действия <button type="button" (click)="addPriceElement()" class="btn btn-primary"><i class="fa fa-plus"></i></button></th>
+          <th style="width:20%;" scope="col">Действия <button type="button" (click)="addPriceElement({id: 0, brandId: 0, modelId: 0, categoryId: 0, price: 0})" class="btn btn-primary"><i class="fa fa-plus"></i></button></th>
         </tr>
         </thead>
         <tbody>
@@ -19,26 +19,27 @@
             <td>
               <select title="Бренд" name="brand"
                       class="form-control"
-                      [(ngModel)]="requestModel.brandId">
-                <option *ngFor="let r of regions;" [(value)]="r.id">{{r.name}}</option>
+                      [(ngModel)]="priceElement.brandId"
+                      (change)="setPhoneModels(priceElement)">
+                <option *ngFor="let r of brands;" [(value)]="r.id">{{r.name}}</option>
               </select>
             </td>
             <td>
               <select title="Модель" name="model"
                       class="form-control"
-                      [(ngModel)]="requestModel.modelId">
-                <option *ngFor="let r of regions;" [(value)]="r.id">{{r.name}}</option>
+                      [(ngModel)]="priceElement.modelId">
+                <option *ngFor="let r of models[priceElement.brandId];" [(value)]="r.id">{{r.name}}</option>
               </select>
             </td>
             <td>
               <select title="Тип поломки" name="category"
                       class="form-control"
-                      [(ngModel)]="requestModel.categoryId">
-                <option *ngFor="let r of regions;" [(value)]="r.id">{{r.name}}</option>
+                      [(ngModel)]="priceElement.categoryId">
+                <option *ngFor="let r of categories;" [(value)]="r.id">{{r.name}}</option>
               </select>
             </td>
             <td>
-              <input type="text" name="cost" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Стоимость">
+              <input type="text" name="cost" [(ngModel)]="priceElement.price" class="form-control mb-2 mr-sm-2 mb-sm-0" placeholder="Стоимость">
             </td>
             <td>
               <button type="button" (click)="updatePriceElement(priceElement)" class="btn btn-primary"><i class="fa fa-check"></i></button>

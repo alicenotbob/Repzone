@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ServicePriceRepozitory extends JpaRepository<ServicePrice, Long> {
     List<ServicePrice> findAllByModelIdAndCategoryId(Long modelId, Long categoryId);
+    List<ServicePrice> findAllByServiceId(Long serviceId);
 }

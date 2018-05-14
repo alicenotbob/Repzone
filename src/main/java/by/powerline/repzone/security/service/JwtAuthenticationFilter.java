@@ -25,8 +25,7 @@ import java.util.Optional;
  */
 public class JwtAuthenticationFilter extends AbstractAuthenticationProcessingFilter {
 
-    @Value("${security.authentication.token.http_header}")
-    private String AUTHENTICATION_TOKEN_HEADER;
+    private String AUTHENTICATION_TOKEN_HEADER = "authentication";
 
     public JwtAuthenticationFilter(final AuthenticationManager authenticationManager) {
         super(request -> true);

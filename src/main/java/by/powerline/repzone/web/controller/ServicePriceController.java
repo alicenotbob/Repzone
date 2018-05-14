@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin
 @RestController
 @RequiredArgsConstructor
 public class ServicePriceController {
@@ -18,5 +17,15 @@ public class ServicePriceController {
     @PostMapping(value = "/searchServicePrices")
     public List<ServicePriceDTO> getServicePrice(@RequestBody RequestDTO dto) {
         return servicePriceService.getServicesPrices(dto);
+    }
+
+    @PostMapping(value = "/savePriceElement")
+    public ServicePriceDTO savePriceElement(@RequestBody ServicePriceDTO dto) {
+        return servicePriceService.savePriceElement(dto);
+    }
+
+    @GetMapping(value = "/getPriceElements")
+    public List<ServicePriceDTO> getPriceElements() {
+        return servicePriceService.getPriceElements();
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.stereotype.Component;
 @Component
 public class ServicePriceDTO {
     private Long id;
+    private Long brandId;
     private Long modelId;
     private Long categoryId;
     private ServiceDTO service;

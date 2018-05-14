@@ -42,7 +42,9 @@ export class ServicesComponent implements OnInit {
   }
 
   findServices() {
-
+    this.serviceModelService.findServices(this.requestModel).subscribe(next => {
+      this.serviceModels = next;
+    }, err => {});
   }
 
   setRegions() {
